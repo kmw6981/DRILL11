@@ -69,6 +69,8 @@ class Boy:
             self.x = max(0, min(800, self.x))
             if self.x == 800 and self.face_dir > 0:
                 self.face_dir = -1
+            elif self.x == 0 and self.face_dir < 0:
+                self.face_dir = 1
             self.frame = (self.frame + 1) % 8
 
     def draw(self):
