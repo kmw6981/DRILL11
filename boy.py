@@ -51,6 +51,8 @@ class Boy:
                     self.wake_up()
                 if self.state == 'idle':
                     self.start_run()
+                elif self.state == 'invincible_run':
+                    self.override_invincible_run()
         elif event.type == SDL_KEYUP and event.key in (SDLK_LEFT, SDLK_RIGHT):
             if self.state == 'run':
                 self.stop_run()
