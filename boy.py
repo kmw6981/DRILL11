@@ -9,6 +9,7 @@ class Boy:
         self.frame = 0
         self.face_dir = 1
         self.idle_started = get_time()
+        self.invincible_started = None
         self.image = load_image('animation_sheet.png')
         self.machine = Machine(
             model=self,
