@@ -12,7 +12,7 @@ class Boy:
         self.image = load_image('animation_sheet.png')
         self.machine = Machine(
             model=self,
-            states=['idle', 'run', 'sleep'],
+            states=['idle', 'run', 'sleep', 'invincible_run'],
             initial='idle',
         )
         self.machine.add_transition('fall_asleep', 'idle', 'sleep')
