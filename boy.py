@@ -24,8 +24,12 @@ class Boy:
         self.machine.add_transition('start_run', 'idle', 'run')
         self.machine.add_transition('stop_run', 'run', 'idle', after='reset_idle_time')
         self.machine.add_transition(
-            'start_invincible_run', ['idle', 'run', 'sleep'], 'invincible_run'
+            'start_invincible_run', ['idle', 'run', 'sleep'], 'invincible_run',
+            after='mark_invincible_run_started',
         )
+
+    def mark_invincible_run_started(self):
+        self.invincible_started = get_time()
 
     def reset_idle_time(self):
         self.idle_started = get_time()
