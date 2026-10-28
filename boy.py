@@ -95,6 +95,19 @@ class Boy:
                 pico2d_core.renderer, self.image.texture, src, dest,
                 sleep_rotation, None, pico2d_core.SDL_FLIP_NONE,
             )
+        elif self.state == 'invincible_run':
+            run_row = 100 if self.face_dir == 1 else 0
+            src = pico2d_core.SDL_Rect(
+                self.frame * 100,
+                self.image.h - run_row - 100,
+                100,
+                100,
+            )
+            dest = pico2d_core.to_sdl_rect(self.x - 70, self.y - 70, 140, 140)
+            pico2d_core.SDL_RenderCopyEx(
+                pico2d_core.renderer, self.image.texture, src, dest,
+                0, None, pico2d_core.SDL_FLIP_NONE,
+            )
         elif self.state == 'run' and self.face_dir == 1:
             self.image.clip_draw(self.frame * 100, 100, 100, 100, self.x, self.y)
         elif self.state == 'run':
