@@ -4,6 +4,8 @@ from transitions import Machine
 
 
 class Boy:
+    INVINCIBLE_RUN_DURATION = 5.0
+
     def __init__(self):
         self.x, self.y = 400, 90
         self.frame = 0
