@@ -40,7 +40,9 @@ class Boy:
         )
 
         if event.type == SDL_KEYDOWN:
-            if self.state == 'sleep' and event.key == SDLK_SPACE:
+            if event.key == SDLK_a and self.state != 'invincible_run':
+                self.start_invincible_run()
+            elif self.state == 'sleep' and event.key == SDLK_SPACE:
                 self.wake_up()
             elif event.key in (SDLK_LEFT, SDLK_RIGHT):
                 self.face_dir = -1 if event.key == SDLK_LEFT else 1
