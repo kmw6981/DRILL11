@@ -35,7 +35,9 @@ class Boy:
         self.idle_started = get_time()
 
     def handle_event(self, event):
-        from pico2d import SDL_KEYDOWN, SDL_KEYUP, SDLK_LEFT, SDLK_RIGHT, SDLK_SPACE
+        from pico2d import (
+            SDL_KEYDOWN, SDL_KEYUP, SDLK_LEFT, SDLK_RIGHT, SDLK_SPACE, SDLK_a,
+        )
 
         if event.type == SDL_KEYDOWN:
             if self.state == 'sleep' and event.key == SDLK_SPACE:
