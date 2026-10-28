@@ -23,6 +23,7 @@ class Boy:
         self.machine.add_transition('wake_up', 'sleep', 'idle', after='reset_idle_time')
         self.machine.add_transition('start_run', 'idle', 'run')
         self.machine.add_transition('stop_run', 'run', 'idle', after='reset_idle_time')
+        self.machine.add_transition('override_invincible_run', 'invincible_run', 'run')
         self.machine.add_transition(
             'start_invincible_run', ['idle', 'run', 'sleep'], 'invincible_run',
             after='mark_invincible_run_started',
