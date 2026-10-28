@@ -58,7 +58,7 @@ class Boy:
             )
             sleep_y = self.y - 25
             dest = pico2d_core.to_sdl_rect(self.x - 50, sleep_y - 50, 100, 100)
-            sleep_rotation = 270
+            sleep_rotation = 270 if self.face_dir == 1 else 90
             pico2d_core.SDL_RenderCopyEx(
                 pico2d_core.renderer, self.image.texture, src, dest,
                 sleep_rotation, None, pico2d_core.SDL_FLIP_NONE,
