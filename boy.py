@@ -58,9 +58,10 @@ class Boy:
             )
             sleep_y = self.y - 25
             dest = pico2d_core.to_sdl_rect(self.x - 50, sleep_y - 50, 100, 100)
+            sleep_rotation = 270
             pico2d_core.SDL_RenderCopyEx(
                 pico2d_core.renderer, self.image.texture, src, dest,
-                270, None, pico2d_core.SDL_FLIP_NONE,
+                sleep_rotation, None, pico2d_core.SDL_FLIP_NONE,
             )
         elif self.state == 'run' and self.face_dir == 1:
             self.image.clip_draw(self.frame * 100, 100, 100, 100, self.x, self.y)
