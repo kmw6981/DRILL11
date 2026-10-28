@@ -25,6 +25,9 @@ class Boy:
         self.machine.add_transition('stop_run', 'run', 'idle', after='reset_idle_time')
         self.machine.add_transition('override_invincible_run', 'invincible_run', 'run')
         self.machine.add_transition(
+            'end_invincible_run', 'invincible_run', 'idle', after='reset_idle_time'
+        )
+        self.machine.add_transition(
             'start_invincible_run', ['idle', 'run', 'sleep'], 'invincible_run',
             after='mark_invincible_run_started',
         )
@@ -68,13 +71,16 @@ class Boy:
             self.x = max(0, min(800, self.x))
             self.frame = (self.frame + 1) % 8
         elif self.state == 'invincible_run':
-            self.x += self.face_dir * self.INVINCIBLE_RUN_SPEED
-            self.x = max(0, min(800, self.x))
-            if self.x == 800 and self.face_dir > 0:
-                self.face_dir = -1
-            elif self.x == 0 and self.face_dir < 0:
-                self.face_dir = 1
-            self.frame = (self.frame + 1) % 8
+            if get_time() - self.invincible_started >= self.INVINCIBLE_RUN_DURATION:
+                self.end_invincible_run()
+            else:
+                self.x += self.face_dir * self.INVINCIBLE_RUN_SPEED
+                self.x = max(0, min(800, self.x))
+                if self.x == 800 and self.face_dir > 0:
+                    self.face_dir = -1
+                elif self.x == 0 and self.face_dir < 0:
+                    self.face_dir = 1
+                self.frame = (self.frame + 1) % 8
 
     def draw(self):
         if self.state == 'sleep':
