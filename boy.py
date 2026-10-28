@@ -64,6 +64,10 @@ class Boy:
             self.x += self.face_dir * 3
             self.x = max(0, min(800, self.x))
             self.frame = (self.frame + 1) % 8
+        elif self.state == 'invincible_run':
+            self.x += self.face_dir * self.INVINCIBLE_RUN_SPEED
+            self.x = max(0, min(800, self.x))
+            self.frame = (self.frame + 1) % 8
 
     def draw(self):
         if self.state == 'sleep':
